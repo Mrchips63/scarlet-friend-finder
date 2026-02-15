@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Scarlet Lady – Lifestyle Friend Finder</title>
+<style>
+  :root { --border:#ddd; --muted:#666; --bg:#fafafa; }
+  body { margin:0; font-family: Arial, sans-serif; }
+  header { padding: 14px 16px; border-bottom:1px solid var(--border); background:white; position:sticky; top:0; z-index:10; }
+  .title { font-weight:900; font-size:18px; }
+  .sub { color:var(--muted); font-size:12px; margin-top:6px; line-height:1.4; }
+  .wrap { display:grid; grid-template-columns: 460px 1fr; height: calc(100vh - 86px); }
+  .left { border-right:1px solid var(--border); overflow:auto; padding:12px; background:white; }
+  .right { overflow:auto; padding:12px; background:var(--bg); }
+  .controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:10px; }
+  input[type="search"] { flex:1; min-width:240px; padding:10px 12px; border:1px solid var(--border); border-radius:12px; font-size:14px; }
+  select { padding:10px 12px; border:1px solid var(--border); border-radius:12px; font-size:14px; background:white; }
+  .chiprow { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 2px; }
+  .chip { border:1px solid var(--border); border-radius:999px; padding:5px 10px; font-size:12px; background:white; cursor:pointer; user-select:none; }
+  .chip.active { border-color:#111; }
+  .count { font-size:12px; color:var(--muted); margin: 4px 0 10px; }
+  .card { border:1px solid #e6e6e6; border-radius:14px; padding:10px 12px; margin:8px 0; background:white; }
+  .top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+  .name { font-weight:900; }
+  .cabin { font-weight:900; }
+  .meta { color:var(--muted); font-size:12px; margin-top:4px; }
+  .handles { margin-top:8px; font-size:13px; }
+  .handles b { font-size:12px; color:var(--muted); font-weight:800; display:inline-block; width:70px; }
+  .btns { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  a.btn, button.btn { display:inline-block; text-decoration:none; border:1px solid var(--border); padding:8px 10px; border-radius:12px; color:#111; font-size:13px; background:white; cursor:pointer; }
+  a.btn:hover, button.btn:hover { background:#f6f6f6; }
+  .panel { border:1px solid var(--border); border-radius:14px; padding:12px; background:white; }
+  .panel h3 { margin:0 0 8px; font-size:14px; }
+  .panel p { margin:0 0 8px; font-size:13px; color:#333; line-height:1.4; }
+  .legend { font-size:12px; color:var(--muted); line-height:1.5; }
+  .muted { color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div class="title">Scarlet Lady – Lifestyle Friend Finder</div>
+  <div class="sub">
+    Search by <b>name</b>, <b>cabin</b>, or <b>handle</b> (SLS/SDC/AFF/Kasidie). Then tap <b>Show Cabin on Deck Plan</b>.
+    <br/><span class="muted">Tip: Share this one file with the group (Drive/Dropbox link works great).</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="left">
+    <div class="controls">
+      <input id="q" type="search" placeholder="Search: Brett, 14221A, mmpartysxycpl…" />
+      <select id="deckFilter">
+        <option value="all">All decks</option>
+      </select>
+    </div>
+    <div class="chiprow" id="chips"></div>
+    <div class="count" id="count"></div>
+    <div id="list"></div>
+  </div>
+
+  <div class="right">
+    <div class="panel">
+      <h3>How your group uses this</h3>
+      <p><b>1)</b> Type a name, cabin, or handle.</p>
+      <p><b>2)</b> Tap <b>Show Cabin on Deck Plan</b> (best) → opens an interactive cabin location in a new tab.</p>
+      <p><b>3)</b> Or tap <b>Open Official PDF</b> to view the deck layout page.</p>
+      <div class="legend">
+        • “Show Cabin on Deck Plan” is the easiest way for people to find each other fast.<br/>
+        • Use the chips to filter by platform (SLS / SDC / AFF / Kasidie).<br/>
+        • “Copy Cabin” makes it easy to paste into chat.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ITEMS = [{"name": "Al & Teri", "cabin": "12342 A", "cabin_compact": "12342A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12342A"}, {"name": "Alonzo & Michele", "cabin": "10238 A", "cabin_compact": "10238A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10238A"}, {"name": "Brent & Jennifer", "cabin": "12237 A", "cabin_compact": "12237A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12237A"}, {"name": "Brett & Susan", "cabin": "8070 Z", "sls": "LivingLifeTogether63", "sdc": "HimHer63", "aff": "LifeTogether63", "cabin_compact": "8070Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8070Z"}, {"name": "Brian & Lisa", "cabin": "12285 A", "cabin_compact": "12285A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12285A"}, {"name": "Bruce & Lisa", "cabin": "8210 Z", "cabin_compact": "8210Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8210Z"}, {"name": "Captain Matt", "cabin": "14158 Z", "cabin_compact": "14158Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14158Z"}, {"name": "Dale & Debbie", "cabin": "14221 Z", "cabin_compact": "14221Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14221Z"}, {"name": "Greg & Lisa", "cabin": "10106 Z", "sls": "Cincy69couple513", "cabin_compact": "10106Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10106Z"}, {"name": "Jared & Michelle", "cabin": "12009 A", "cabin_compact": "12009A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12009A"}, {"name": "Jason & Mariah", "cabin": "12231 A", "cabin_compact": "12231A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12231A"}, {"name": "Jeff & Melanie", "cabin": "10254 A", "cabin_compact": "10254A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10254A"}, {"name": "Joe & Clair", "cabin": "13158 Z", "cabin_compact": "13158Z", "deck": 13, "pdf_page": 10, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=10", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-13", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/13158Z"}, {"name": "Joel & Tamera", "cabin": "10014 A", "cabin_compact": "10014A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10014A"}, {"name": "Kasidie", "cabin": "", "kasidie": "Sweetvelvetcake", "cabin_compact": "", "deck": null, "pdf_page": null, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf", "deck_link": null, "cabin_link": null}, {"name": "Misa & Maggie", "cabin": "12237 Z", "sls": "mmpartysxycpl", "sdc": "mmpartysxycpl", "cabin_compact": "12237Z", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12237Z"}, {"name": "Nick & Jeni", "cabin": "14221 A", "cabin_compact": "14221A", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14221A"}, {"name": "Osayi (F)", "cabin": "10258 Z", "cabin_compact": "10258Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10258Z"}, {"name": "Roy & Malinda", "cabin": "14146 Z", "cabin_compact": "14146Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14146Z"}, {"name": "Scotty & Sheri", "cabin": "15315 A", "cabin_compact": "15315A", "deck": 15, "pdf_page": 12, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=12", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-15", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/15315A"}, {"name": "Simon & Nicole", "cabin": "5226 Z", "cabin_compact": "5226Z", "deck": 5, "pdf_page": 2, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=2", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-5", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/5226Z"}, {"name": "Steve & Jennifer", "cabin": "10314 Z", "cabin_compact": "10314Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10314Z"}, {"name": "Tim & Kat", "cabin": "8026 Z", "cabin_compact": "8026Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8026Z"}, {"name": "Todd & Kimmi", "cabin": "10230 Z", "cabin_compact": "10230Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10230Z"}];
+let platformFilter = "ALL";
+
+function uniqDecks() {
+  const s = new Set(ITEMS.map(x => x.deck).filter(Boolean));
+  return Array.from(s).sort((a,b)=>a-b);
+}
+
+function buildDeckFilter() {
+  const sel = document.getElementById('deckFilter');
+  for (const deck of uniqDecks()) {
+    const o = document.createElement('option');
+    o.value = String(deck);
+    o.textContent = `Deck ${deck}`;
+    sel.appendChild(o);
+  }
+}
+
+function buildChips() {
+  const chips = document.getElementById('chips');
+  const platforms = ["ALL","SLS","SDC","AFF","KASIDIE"];
+  chips.innerHTML = platforms.map(p => `
+    <div class="chip ${p==="ALL" ? "active" : ""}" onclick="setPlatform('${p}')">${p}</div>
+  `).join("");
+}
+
+function setPlatform(p) {
+  platformFilter = p;
+  const nodes = document.getElementsByClassName('chip');
+  for (let i=0;i<nodes.length;i++) nodes[i].classList.remove('active');
+  for (let i=0;i<nodes.length;i++) if (nodes[i].textContent === p) nodes[i].classList.add('active');
+  render();
+}
+
+function matchesPlatform(it) {
+  if (platformFilter === "ALL") return true;
+  return (it.platforms || []).includes(platformFilter);
+}
+
+function safe(s) { return (s || ""); }
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).catch(()=>{});
+}
+
+function render() {
+  const q = (document.getElementById('q').value || '').trim().toLowerCase();
+  const df = document.getElementById('deckFilter').value;
+  const list = document.getElementById('list');
+
+  let filtered = ITEMS.filter(it => {
+    if (!matchesPlatform(it)) return false;
+    const inDeck = (df === 'all') ? true : String(it.deck) === df;
+    if (!inDeck) return false;
+    if (!q) return true;
+
+    const hay = [
+      safe(it.name),
+      safe(it.cabin_compact),
+      safe(it.sls),
+      safe(it.sdc),
+      safe(it.aff),
+      safe(it.kasidie)
+    ].join(" ").toLowerCase();
+
+    return hay.includes(q);
+  });
+
+  document.getElementById('count').textContent = `${filtered.length} match(es)`;
+
+  list.innerHTML = filtered.map(it => {
+    const hasCabin = !!it.cabin_compact;
+    const btnCabin = hasCabin ? `<a class="btn" href="${it.cabin_link}" target="_blank" rel="noopener">Show Cabin on Deck Plan</a>` : '';
+    const btnDeck = (hasCabin && it.deck_link) ? `<a class="btn" href="${it.deck_link}" target="_blank" rel="noopener">Open Deck (Interactive)</a>` : '';
+    const btnPdf  = `<a class="btn" href="${it.pdf_link}" target="_blank" rel="noopener">Open Official PDF</a>`;
+    const btnCopy = hasCabin ? `<button class="btn" onclick="copyText('${it.cabin_compact}');">Copy Cabin</button>` : '';
+
+    const handles = `
+      <div class="handles">
+        ${it.sls ? `<div><b>SLS</b> ${it.sls}</div>` : ''}
+        ${it.sdc ? `<div><b>SDC</b> ${it.sdc}</div>` : ''}
+        ${it.aff ? `<div><b>AFF</b> ${it.aff}</div>` : ''}
+        ${it.kasidie ? `<div><b>Kasidie</b> ${it.kasidie}</div>` : ''}
+      </div>
+    `;
+
+    return `
+      <div class="card">
+        <div class="top">
+          <div>
+            <div class="name">${it.name}</div>
+            <div class="meta">${it.deck ? `Deck ${it.deck}` : 'No cabin listed'}</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="cabin">${hasCabin ? it.cabin_compact : ''}</div>
+            <div class="meta">${it.pdf_page ? `PDF page ${it.pdf_page}` : ''}</div>
+          </div>
+        </div>
+        ${handles}
+        <div class="btns">
+          ${btnCabin}
+          ${btnDeck}
+          ${btnPdf}
+          ${btnCopy}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+document.getElementById('q').addEventListener('input', render);
+document.getElementById('deckFilter').addEventListener('change', render);
+
+buildDeckFilter();
+buildChips();
+render();
+</script>
+</body>
+</html>
