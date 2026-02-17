@@ -75,7 +75,169 @@
 </div>
 
 <script>
-const ITEMS = [{"name": "Al & Teri", "cabin": "12342 A", "cabin_compact": "12342A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12342A"}, {"name": "Alonzo & Michele", "cabin": "10238 A", "cabin_compact": "10238A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10238A"}, {"name": "Brent & Jennifer", "cabin": "12237 A", "cabin_compact": "12237A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12237A"}, {"name": "Brett & Susan", "cabin": "8070 Z", "sls": "LivingLifeTogether63", "sdc": "HimHer63", "aff": "LifeTogether63", "cabin_compact": "8070Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8070Z"}, {"name": "Brian & Lisa", "cabin": "12285 A", "cabin_compact": "12285A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12285A"}, {"name": "Bruce & Lisa", "cabin": "8210 Z", "cabin_compact": "8210Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8210Z"}, {"name": "Captain Matt", "cabin": "14158 Z", "cabin_compact": "14158Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14158Z"}, {"name": "Dale & Debbie", "cabin": "14221 Z", "cabin_compact": "14221Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14221Z"}, {"name": "Greg & Lisa", "cabin": "10106 Z", "sls": "Cincy69couple513", "cabin_compact": "10106Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10106Z"}, {"name": "Jared & Michelle", "cabin": "12009 A", "cabin_compact": "12009A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12009A"}, {"name": "Jason & Mariah", "cabin": "12231 A", "cabin_compact": "12231A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12231A"}, {"name": "Jeff & Melanie", "cabin": "10254 A", "cabin_compact": "10254A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10254A"}, {"name": "Joe & Clair", "cabin": "13158 Z", "cabin_compact": "13158Z", "deck": 13, "pdf_page": 10, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=10", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-13", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/13158Z"}, {"name": "Joel & Tamera", "cabin": "10014 A", "cabin_compact": "10014A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10014A"}, {"name": "Kasidie", "cabin": "", "kasidie": "Sweetvelvetcake", "cabin_compact": "", "deck": null, "pdf_page": null, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf", "deck_link": null, "cabin_link": null}, {"name": "Misa & Maggie", "cabin": "12237 Z", "sls": "mmpartysxycpl", "sdc": "mmpartysxycpl", "cabin_compact": "12237Z", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12237Z"}, {"name": "Nick & Jeni", "cabin": "14221 A", "cabin_compact": "14221A", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14221A"}, {"name": "Osayi (F)", "cabin": "10258 Z", "cabin_compact": "10258Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10258Z"}, {"name": "Roy & Malinda", "cabin": "14146 Z", "cabin_compact": "14146Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14146Z"}, {"name": "Scotty & Sheri", "cabin": "15315 A", "cabin_compact": "15315A", "deck": 15, "pdf_page": 12, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=12", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-15", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/15315A"}, {"name": "Simon & Nicole", "cabin": "5226 Z", "cabin_compact": "5226Z", "deck": 5, "pdf_page": 2, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=2", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-5", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/5226Z"}, {"name": "Steve & Jennifer", "cabin": "10314 Z", "cabin_compact": "10314Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10314Z"}, {"name": "Tim & Kat", "cabin": "8026 Z", "cabin_compact": "8026Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8026Z"}, {"name": "Todd & Kimmi", "cabin": "10230 Z", "cabin_compact": "10230Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10230Z"}];
+const ITEMS = [{"name": "name    Al & Teri
+name          NaN
+name          NaN
+name          NaN
+name          NaN
+name          NaN
+Name: 25, dtype: object", "cabin": "12342 A", "cabin_compact": "12342A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12342A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Alonzo & Michele
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+Name: 1, dtype: object", "cabin": "10238 A", "cabin_compact": "10238A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10238A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Brent & Jennifer
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+Name: 35, dtype: object", "cabin": "12237 A", "cabin_compact": "12237A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12237A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Brett & Susan 
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+Name: 37, dtype: object", "cabin": "8070 Z", "cabin_compact": "8070Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8070Z", "sls": "SLS - LivingLifeTogether63", "sdc": "SDC - HimHer63", "aff": "AFF - LifeTogether63", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Brian & Lisa
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+Name: 13, dtype: object", "cabin": "12285 A", "cabin_compact": "12285A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12285A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Bruce & Lisa
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+Name: 21, dtype: object", "cabin": "8210 Z", "cabin_compact": "8210Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8210Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Captain Matt
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+Name: 5, dtype: object", "cabin": "14158 Z", "cabin_compact": "14158Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14158Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Dale & Debbie
+name              NaN
+name              NaN
+name              NaN
+name              NaN
+name              NaN
+Name: 7, dtype: object", "cabin": "14221 Z", "cabin_compact": "14221Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14221Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Felipe & Amanda
+name                NaN
+name                NaN
+name                NaN
+name                NaN
+name                NaN
+Name: 57, dtype: object", "cabin": "11066 Z", "cabin_compact": "11066Z", "deck": 11, "pdf_page": 8, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=8", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-11", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/11066Z", "sls": "SLS - FandAwannaplay", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Greg & Lisa
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+Name: 31, dtype: object", "cabin": "10106 Z", "cabin_compact": "10106Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10106Z", "sls": "SLS - Cincy69couple513", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Greg & Lisa 
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+Name: 17, dtype: object", "cabin": "10106 Z", "cabin_compact": "10106Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10106Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Jared & Michelle
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+Name: 41, dtype: object", "cabin": "12009 A", "cabin_compact": "12009A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12009A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Jason & Mariah
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+Name: 43, dtype: object", "cabin": "12231 A", "cabin_compact": "12231A", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12231A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Jeff & Melanie
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+Name: 29, dtype: object", "cabin": "10254 A", "cabin_compact": "10254A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10254A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Joe & Clair
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+Name: 47, dtype: object", "cabin": "13158 Z", "cabin_compact": "13158Z", "deck": 13, "pdf_page": 10, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=10", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-13", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/13158Z", "sls": "SLS: inquiringmindsduo2021", "sdc": "SDC: inquisitivepair", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Joel and Tamara
+name                NaN
+name                NaN
+name                NaN
+name                NaN
+name                NaN
+Name: 33, dtype: object", "cabin": "10014 A", "cabin_compact": "10014A", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10014A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Misa & Maggie
+name              NaN
+name              NaN
+name              NaN
+name              NaN
+name              NaN
+Name: 39, dtype: object", "cabin": "12237 Z", "cabin_compact": "12237Z", "deck": 12, "pdf_page": 9, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=9", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-12", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/12237Z", "sls": "SLS - mmpartysxycpl", "sdc": "SDC - mmpartysxycpl", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Nick & Jeni
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+Name: 15, dtype: object", "cabin": "14221 A", "cabin_compact": "14221A", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14221A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Osayi (F)
+name          NaN
+name          NaN
+name          NaN
+name          NaN
+name          NaN
+Name: 51, dtype: object", "cabin": "10258 Z", "cabin_compact": "10258Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10258Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Paul & Kara
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+name            NaN
+Name: 59, dtype: object", "cabin": "9030 A", "cabin_compact": "9030A", "deck": 9, "pdf_page": 6, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=6", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-9", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/9030A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "Kasidie - AZPK503", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Robert & Carol
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+Name: 55, dtype: object", "cabin": "8046 Z", "cabin_compact": "8046Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8046Z", "sls": "SLS - Cutienabeast4play", "sdc": "SDC - Cutienabeast4play", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Roy & Malinda
+name              NaN
+name              NaN
+name              NaN
+name              NaN
+name              NaN
+Name: 49, dtype: object", "cabin": "14146 Z", "cabin_compact": "14146Z", "deck": 14, "pdf_page": 11, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=11", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-14", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/14146Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Scotty & Sheri
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+Name: 23, dtype: object", "cabin": "15315 A", "cabin_compact": "15315A", "deck": 15, "pdf_page": 12, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=12", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-15", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/15315A", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Simon & Nicole
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+name               NaN
+Name: 45, dtype: object", "cabin": "5226 Z", "cabin_compact": "5226Z", "deck": 5, "pdf_page": 2, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=2", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-5", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/5226Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "Kasidie - Sweetvelvetcake", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Steve & Jennifer
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+name                 NaN
+Name: 9, dtype: object", "cabin": "10314 Z", "cabin_compact": "10314Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10314Z", "sls": "SLS - Stevef87", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Tim & Kat
+name          NaN
+name          NaN
+name          NaN
+name          NaN
+name          NaN
+Name: 53, dtype: object", "cabin": "8026 Z", "cabin_compact": "8026Z", "deck": 8, "pdf_page": 5, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=5", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-8", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/8026Z", "sls": "nan", "sdc": "nan", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}, {"name": "name    Todd & Kimmi
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+name             NaN
+Name: 3, dtype: object", "cabin": "10230 Z", "cabin_compact": "10230Z", "deck": 10, "pdf_page": 7, "pdf_link": "https://virgin.3dseatmapvr.com/SCARLET_LADY/ScarletLadyDeckPlans_V5.pdf#page=7", "deck_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/deck-plans/deck-10", "cabin_link": "https://gangwaze.com/cruise-lines/virgin-voyages/scarlet-lady/cabins/10230Z", "sls": "nan", "sdc": "SDC - TandK88", "aff": "nan", "kasidie": "nan", "platforms": ["SLS", "SDC", "AFF", "KASIDIE"]}];
 let platformFilter = "ALL";
 
 function uniqDecks() {
